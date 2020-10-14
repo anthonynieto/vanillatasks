@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jS Task List</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1> Vanilla jS Task List</h1>
+<fieldset id="newtask">
+	<legend>New Task</legend><br>
+		<label for="task">Task:</label>
+		<input type="text" placeholder="Enter a Task" id="enter_task" name="enter_task">
+		<input type = "submit" id="submit"><br><br>
+</fieldset>
+
+<fieldset id="todolist">
+	<legend>Current to-do List</legend>
+	<ul class="tasked" id="tasked">
+	</ul>
+	<input type="button" id="clearbutton" value="Clear All">
+</fieldset>
+
+<script src="js.js"></script>
+</body>
+</html>
