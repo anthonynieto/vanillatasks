@@ -6,14 +6,15 @@ var clearbutton = document.getElementById("clearbutton");
 var taskinput = document.getElementById("enter_task");
 var ul = document.querySelector("ul");
 
+tasklist = JSON.parse(window.localStorage.getItem('tasks'));
 
-// Check Quantity from local storage
-let tasklist;
-if (localStorage.getItem('tasks') === null) {
+if (tasklist === null){
+	console.log('tasklist is empty');
 	tasklist = [];
+}	
 
-
-}	else {
+	else {
+	console.log('You have tasks to do!');
 	tasklist = JSON.parse(window.localStorage.getItem('tasks'));
 
 	// Add existing values to DOM
@@ -22,30 +23,25 @@ if (localStorage.getItem('tasks') === null) {
 	li.appendChild(document.createTextNode(tasklist));
 }
 
-// Retrieve existing tasks from Local Storage
-/*tasklist = JSON.parse(window.localStorage.getItem('tasks'));*/
-
-// Iterate through Task object values to console log
-/*tasklist.keys(localStorage).forEach(task) ()=>{
-	console.log(localStorage.getItem(task));
-}*/
-
-
 // Submit Button adds to Local Storage and DOM
 submitbutton.addEventListener("click", function(){
 	if (taskinput.value.length < 4){
-		alert("please be more specific");
+		alert("ERROR: please be more specific");
 		taskinput.value = "";
 	}
 
-	if (taskinput.value.length > 40) {
-		alert ("please be brief");
+	else if (taskinput.value.length > 40) {
+		alert ("ERROR: please be brief");
 		taskinput.value = "";
 	}
 
 		else {
+			// Check for existing array with existing values
 
-			// Write to local storage
+
+			// If Yes, then push/append to task value
+
+			// If not, then Write to local storage
 			let tasks; 
 			tasks = []; 
 			window.localStorage.setItem('tasks',JSON.stringify(taskinput.value));
@@ -54,6 +50,7 @@ submitbutton.addEventListener("click", function(){
 			var li = document.createElement("li");
 			ul.appendChild(li);
 			li.appendChild(document.createTextNode(taskinput.value));
+			console.log(`Congrats, you have added a new task: ${taskinput.value}`);
 			taskinput.value = "";
 }});
 
@@ -64,5 +61,5 @@ clearbutton.addEventListener("click", function(){
 	while (tasks.hasChildNodes()){
 		tasks.removeChild(tasks.firstChild);
 	localStorage.clear();
-	}
-});
+	console.log('All Tasks cleared from Local Storage');
+}});
