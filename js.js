@@ -9,13 +9,10 @@ var ul = document.querySelector("ul");
 tasklist = JSON.parse(window.localStorage.getItem('tasks'));
 
 if (tasklist === null){
-	console.log('tasklist is empty');
 	tasklist = [];
 }	
 
 	else {
-	console.log('You have tasks to do!');
-	tasklist = JSON.parse(window.localStorage.getItem('tasks'));
 
 	// Add existing values to DOM
 	var li = document.createElement("li");
@@ -30,28 +27,22 @@ submitbutton.addEventListener("click", function(){
 		taskinput.value = "";
 	}
 
-	else if (taskinput.value.length > 40) {
-		alert ("ERROR: please be brief");
+	else if (taskinput.value.length > 20) {
+		alert ("ERROR: please be more brief");
 		taskinput.value = "";
 	}
 
 		else {
-			window.localStorage.setItem('tasks',JSON.stringify(taskinput.value));
-
 			// Update the DOM
 			var li = document.createElement("li");
 			ul.appendChild(li);
 			li.appendChild(document.createTextNode(taskinput.value));
-			console.log(`Congrats, you have added a new task: ${taskinput.value}`);
 			taskinput.value = "";
 }});
-
 
 // Clear Tasks AND local storage
 clearbutton.addEventListener("click", function(){
 	var tasks = document.getElementById("tasked");
 	while (tasks.hasChildNodes()){
 		tasks.removeChild(tasks.firstChild);
-	localStorage.clear();
-	console.log('All Tasks cleared from Local Storage');
 }});
