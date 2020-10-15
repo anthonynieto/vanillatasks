@@ -36,14 +36,6 @@ submitbutton.addEventListener("click", function(){
 	}
 
 		else {
-			// Check for existing array with existing values
-
-
-			// If Yes, then push/append to task value
-
-			// If not, then Write to local storage
-			let tasks; 
-			tasks = []; 
 			window.localStorage.setItem('tasks',JSON.stringify(taskinput.value));
 
 			// Update the DOM
