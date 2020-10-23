@@ -10,25 +10,25 @@ getTasks();
 // Function to Retrieve from Local Storage
 function getTasks(){
 let tasks;
-	if (localStorage.getItem('tasks') === null){
+	if (!localStorage.getItem('tasks')){
 		tasks = [];
 	} else {
 		tasks = JSON.parse(localStorage.getItem('tasks'));
 	}
 
-	tasks.forEach(function(task){
+	tasks.forEach(function(tasks){
 	
 		// DOM Construction for each task
 		const li = document.createElement("li");
 		ul.appendChild(li);
-		li.appendChild(document.createTextNode(task));
+		li.appendChild(document.createTextNode(tasks));
 	})
 };
 
 // Function to Store in Local Storage
 function storeInLocalStorage(task){
 	let tasks;
-	if (localStorage.getItem('tasks') === null){
+	if (!localStorage.getItem('tasks')){
 		tasks = [];
 	} else {
 		
