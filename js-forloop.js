@@ -21,6 +21,8 @@ let tasks;
 		// DOM Construction for each task
 		const li = document.createElement("li");
 		ul.appendChild(li);
+		
+		// Shoutout Alan Zhang forloopin'
 		li.appendChild(document.createTextNode(tasks[i]));
 	}
 }
